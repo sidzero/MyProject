@@ -11,6 +11,8 @@ public:
 	void UpdatePos(char);
 	void RevertPos();
 	void Display();
+
+	
 	
 private:
 	
