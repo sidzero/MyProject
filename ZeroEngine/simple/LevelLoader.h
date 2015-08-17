@@ -15,8 +15,8 @@ public:
 	void Draw();
 	bool Update(int,int,char,int,int);
 
-	void Update(player);
-	void Update(Monster);
+	void Update(player&);
+	void Update(Monster&);
 private:
 
 	

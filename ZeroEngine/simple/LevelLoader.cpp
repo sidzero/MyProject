@@ -17,7 +17,7 @@ void LevelLoader::LoadLevel(string FileName)
 	inputFile.open(FileName);
 	if (inputFile.fail())
 	{
-		
+
 		perror("file Loading error");
 		system("PAUSE");
 	}
@@ -33,23 +33,23 @@ void LevelLoader::LoadLevel(string FileName)
 
 void LevelLoader::Draw()
 {
- 
-	for (int i = 0; i < Floor.size();i++)
+
+	for (int i = 0; i < Floor.size(); i++)
 	{
-		std::cout << Floor[i]<<endl;
-		
+		std::cout << Floor[i] << endl;
+
 	}
 
 
 };
 
-bool LevelLoader::Update(int x,int y,char symbol,int xp,int yp)
+bool LevelLoader::Update(int x, int y, char symbol, int xp, int yp)
 {
-	
-	switch(Floor[y][x])
+
+	switch (Floor[y][x])
 	{
 	case '#':
-		
+
 		return false;
 		break;
 
@@ -67,17 +67,17 @@ bool LevelLoader::Update(int x,int y,char symbol,int xp,int yp)
 	/*if (false)
 	{
 
-		
+
 	}
 	else
 	{
-		Floor[yp][xp] = '.';
-		Floor[y][x] = symbol;
-		return true;
+	Floor[yp][xp] = '.';
+	Floor[y][x] = symbol;
+	return true;
 	}*/
 };
 
-void LevelLoader::Update(player Player)
+void LevelLoader::Update(player &Player)
 {
 
 	switch (Floor[Player.y][Player.x])
@@ -86,7 +86,18 @@ void LevelLoader::Update(player Player)
 		Player.RevertPos();
 		return;
 		break;
+	case 'A':
+		Floor[Player.yp][Player.xp] = '.';
+		Floor[Player.y][Player.x] = Player.symbol;
+		Player.Score += 10;
+		return;
+		break;
 
+	case '@':
+		Player.RevertPos();
+		Player.Health -= 20;
+		return;
+		break;
 
 	case '.':
 		Floor[Player.yp][Player.xp] = '.';
@@ -104,7 +115,7 @@ void LevelLoader::Update(player Player)
 };
 
 
-void LevelLoader::Update(Monster monster)
+void LevelLoader::Update(Monster &monster)
 {
 	switch (Floor[monster.y][monster.x])
 	{

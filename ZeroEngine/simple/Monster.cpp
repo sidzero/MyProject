@@ -61,8 +61,8 @@ void Monster::RevertPos()
 
 void Monster::Display()
 {
-	std::cout << "Monster Health :" << Health << std::endl;
-	std::cout << "Monster Score :" << Score << std::endl;
+	std::cout << "Monster Health :" << Health ;
+	std::cout << " Monster Score :" << Score << std::endl;
 };
 Monster::~Monster()
 {

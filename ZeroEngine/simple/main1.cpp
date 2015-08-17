@@ -12,7 +12,7 @@ int main()
 {
 	vector<Monster> monsters;
 	player player1;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 8; i++)
 	{
 		Monster monster;
 		monster.Init();
@@ -44,20 +44,21 @@ int main()
 		player1.UpdatePos(s[0]);
 		system("CLS");
 		for (int i = 0; i < monsters.size(); i++)
-		if (!level1.Update(monsters[i].x, monsters[i].y, monsters[i].symbol, monsters[i].xp, monsters[i].yp))
+			level1.Update(monsters[i]);
+		/*if (!level1.Update(monsters[i].x, monsters[i].y, monsters[i].symbol, monsters[i].xp, monsters[i].yp))
 		{
 			monsters[i].RevertPos();
-		}
+		}*/
 
-		if (!level1.Update(player1.x, player1.y, player1.symbol, player1.xp, player1.yp))
+	/*	if (!level1.Update(player1.x, player1.y, player1.symbol, player1.xp, player1.yp))
 		{
 			player1.RevertPos();
-		}
-
+		}*/
+		level1.Update(player1);
 		level1.Draw();
 		player1.Display();
-		/*for (int i = 0; i < monsters.size(); i++)
-		monsters[i].Display();*/
+		for (int i = 0; i < monsters.size(); i++)
+		monsters[i].Display();
 	}
 
 	return 0;
