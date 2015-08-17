@@ -77,4 +77,52 @@ bool LevelLoader::Update(int x,int y,char symbol,int xp,int yp)
 	}*/
 };
 
+void LevelLoader::Update(player Player)
+{
+
+	switch (Floor[Player.y][Player.x])
+	{
+	case '#':
+		Player.RevertPos();
+		return;
+		break;
+
+
+	case '.':
+		Floor[Player.yp][Player.xp] = '.';
+		Floor[Player.y][Player.x] = Player.symbol;
+		return;
+		break;
+	default:	Player.RevertPos();
+		return;
+		break;
+	}
+
+
+
+
+};
+
+
+void LevelLoader::Update(Monster monster)
+{
+	switch (Floor[monster.y][monster.x])
+	{
+	case '#':
+		monster.RevertPos();
+		return;
+		break;
+
+
+	case '.':
+		Floor[monster.yp][monster.xp] = '.';
+		Floor[monster.y][monster.x] = monster.symbol;
+		return;
+		break;
+	default:
+		monster.RevertPos();
+		return;
+		break;
+	}
+};
 
