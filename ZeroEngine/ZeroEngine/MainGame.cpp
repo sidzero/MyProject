@@ -2,15 +2,9 @@
 
 #include <iostream>
 #include<string>
-void fatalerror(std::string errorString)
-{
-	std::cout <<errorString<<std::endl ;
-	std::cout << "press any key to quit";
-	int tmp;
-	std::cin >> tmp;
-	SDL_Quit();
-	exit(1);
-}
+#include "Error.h"
+
+
 
 MainGame::MainGame()
 {
@@ -28,6 +22,8 @@ MainGame::~MainGame()
 void MainGame::run()
 {
 	initSystems();
+
+	_sprite.init(-1.0f,-1.0f,1.0f,1.0f);
 	gameLoop();
 };
 
@@ -47,7 +43,7 @@ void MainGame::initSystems()
 	{
 		fatalerror("Sdl_GL context cannot be created");
 	}
-
+	glewExperimental = true;
 	GLenum error= glewInit();
 	if (error!=GLEW_OK)
 	{
@@ -58,8 +54,16 @@ void MainGame::initSystems()
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
 
 	glClearColor(0.5,0.0,0.5,1.0);
+	initShaders();
 };
 
+
+void MainGame::initShaders()
+{
+	_colorProgram.compileShaders("Shaders/ColorShading.vert", "Shaders/ColorShading.frag");
+	_colorProgram.addAttribute("vertexPosition");//chk the shader
+	_colorProgram.linkShaders();
+};
 void  MainGame::processInput()
 {
 	SDL_Event evnt;
@@ -100,16 +104,20 @@ void  MainGame::drawGame()
 {
 	glClearDepth(1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	/*//imeediate mode
 	glEnableClientState(GL_COLOR_ARRAY);
 
 	glBegin(GL_TRIANGLES);
 	glColor3f(1.0,0,0);
-	glVertex2f(0,0);
-	glVertex2f(0, 5);
-	glVertex2f(5, 1);
-	glEnd();
+	glVertex2f(-1,-1);
+	glVertex2f(0, -1);
+	glVertex2f(0, 0);
+	glEnd();*/
 
+	_colorProgram.use();
+	_sprite.draw();
 	SDL_GL_SwapWindow(_window);
-
+	_colorProgram.unUse();
 
 };
