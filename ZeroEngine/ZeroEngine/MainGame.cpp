@@ -6,12 +6,9 @@
 
 
 
-MainGame::MainGame()
+MainGame::MainGame() :_window(nullptr), _screenWidth(1024), _screenHeight(768), _gameState(GameState::PLAY), _time(0)
 {
-	_window = nullptr;
-	_screenWidth = 1024;
-	_screenHeight = 768;
-	_gameState = GameState::PLAY;
+	
 }
 
 
@@ -97,6 +94,7 @@ void  MainGame::gameLoop()
 	{
 		processInput();
 		drawGame();
+		_time += 0.1f;
 	}
 
 };
@@ -117,7 +115,12 @@ void  MainGame::drawGame()
 	glVertex2f(0, 0);
 	glEnd();*/
 
+
 	_colorProgram.use();
+	
+	GLuint timeLocation=_colorProgram.getUniformLocation("time");
+	
+	glUniform1f(timeLocation,_time);
 	_sprite.draw();
 	SDL_GL_SwapWindow(_window);
 	_colorProgram.unUse();
