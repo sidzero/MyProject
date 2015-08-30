@@ -1,9 +1,10 @@
 #version 130
 
-out vec3 color;
+flat in vec4 fragmentColor;
+out vec4 color;
 
 void main()
 {
-color=vec3(1.0,0.2,0.2);
+color=fragmentColor;
 
 }
