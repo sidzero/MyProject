@@ -6,7 +6,7 @@
 #include "ImageLoader.h"
 
 
-MainGame::MainGame() :_window(nullptr), _screenWidth(1024), _screenHeight(768), _gameState(GameState::PLAY), _time(0)
+MainGame::MainGame() :_window(nullptr), _screenWidth(1024), _screenHeight(768), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f)
 {
 	
 }
@@ -29,12 +29,7 @@ void MainGame::run()
 
 	_sprites.push_back(new Sprite());
 	_sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
-	for (int i = 0; i < 6000;i++)
-	{
-	_sprites.push_back(new Sprite());
-	_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
-}
 
 	
 	//_playerTexture= ImageLoader::loadPNG("Texture/PNG/CharacterRight_Standing.png");
@@ -45,6 +40,7 @@ void MainGame::run()
 void MainGame::initSystems()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	_window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, SDL_WINDOW_OPENGL);
 	if (_window==nullptr)
@@ -66,10 +62,12 @@ void MainGame::initSystems()
 	}
 
 
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
-
 	glClearColor(0.5,0.0,0.5,1.0);
+
+	SDL_GL_SetSwapInterval(0);
+
 	initShaders();
+	std::printf("**** opengl version %s *****\n",glGetString(GL_VERSION));
 };
 
 
@@ -109,11 +107,29 @@ void  MainGame::processInput()
 void  MainGame::gameLoop()
 {
 
-	while (_gameState!=GameState::EXIT)
+	while (_gameState != GameState::EXIT)
 	{
+		//frame time measure
+		float startTicks = SDL_GetTicks();
 		processInput();
 		drawGame();
 		_time += 0.1f;
+		calculateFPS();
+		//print olny once every 10 frames
+		static int frameCounter = 0;
+		if (frameCounter == 10)
+		{
+			std::cout << _fps << std::endl;
+			frameCounter = 0;
+		}
+		frameCounter++;
+
+		float frameTicks = SDL_GetTicks() - startTicks;
+		//limiting fps 
+		if (1000.0f/_maxFPS >frameTicks)
+		{
+			SDL_Delay((1000.0f/_maxFPS)-frameTicks);
+		}
 	}
 
 };
@@ -153,5 +169,48 @@ void  MainGame::drawGame()
 	_colorProgram.unUse();
 	SDL_GL_SwapWindow(_window);
 	
+
+};
+void MainGame::calculateFPS()
+{
+	static const int NUM_SAMPLES = 10;
+	static float frameTime[NUM_SAMPLES];
+	static int currentFrame = 0;
+
+	static float prevTicks = SDL_GetTicks();
+	float currentTicks;
+
+	currentTicks = SDL_GetTicks();
+	_frameTime = currentTicks - prevTicks;
+
+	prevTicks = currentTicks;
+	int count;
+	currentFrame++;
+	frameTime[currentFrame%NUM_SAMPLES] = _frameTime;
+
+	if (currentFrame<NUM_SAMPLES)
+	{
+		count = currentFrame;
+	}
+	else
+	{
+		count = NUM_SAMPLES;
+	}
+
+	float frameTimeAverage=0;
+	for (int i = 0; i < count; i++)
+	{
+		frameTimeAverage += frameTime[i];
+	}
+	frameTimeAverage /= count;
+	if (frameTimeAverage>0)
+	{
+		_fps = 1000 / frameTimeAverage;
+	}
+	else
+	{
+		_fps = 70;
+	}
+
 
 };

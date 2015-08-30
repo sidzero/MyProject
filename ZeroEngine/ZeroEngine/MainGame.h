@@ -16,7 +16,7 @@ public:
 
 	void run();
 
-	
+	void calculateFPS();
 
 private:
 	void initSystems();
@@ -34,5 +34,7 @@ private:
 	GLSLprogram _colorProgram;
 	float _time;
 	GLTexture _playerTexture;
+
+	float _fps, _frameTime,_maxFPS;
 };
 
