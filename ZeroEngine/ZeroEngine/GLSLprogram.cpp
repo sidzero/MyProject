@@ -160,9 +160,9 @@ void GLSLprogram::unUse()
 		glDisableVertexAttribArray(0);
 	}
 };
-GLuint GLSLprogram::getUniformLocation(const std::string &uniformName)
+GLint GLSLprogram::getUniformLocation(const std::string &uniformName)
 {
-	GLuint location = glGetUniformLocation(_programID, uniformName.c_str());
+	GLint location = glGetUniformLocation(_programID, uniformName.c_str());
 	if (location==GL_INVALID_INDEX)
 	{
 		fatalerror("uniform index "+uniformName+" not found!!!");
