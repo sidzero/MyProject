@@ -2,9 +2,9 @@
 #include <SDL/SDL.h>
 #include <glew\glew.h>
 
-#include "Sprite.h"
-#include "GLSLprogram.h"
-#include "GLTexture.h"
+#include <NthEngine\Sprite.h>
+#include <NthEngine\GLSLprogram.h>
+#include <NthEngine\GLTexture.h>
 #include <vector>
 
 enum class GameState{PLAY,EXIT};

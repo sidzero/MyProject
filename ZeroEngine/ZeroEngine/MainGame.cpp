@@ -2,8 +2,8 @@
 
 #include <iostream>
 #include<string>
-#include "Error.h"
-#include "ImageLoader.h"
+#include <NthEngine\Error.h>
+#include <NthEngine\ImageLoader.h>
 
 
 MainGame::MainGame() :_window(nullptr), _screenWidth(1024), _screenHeight(768), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f)
@@ -30,6 +30,11 @@ void MainGame::run()
 	_sprites.push_back(new Sprite());
 	_sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(0.0f, 0.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
+
+	_sprites.push_back(new Sprite());
+	_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
 	
 	//_playerTexture= ImageLoader::loadPNG("Texture/PNG/CharacterRight_Standing.png");
