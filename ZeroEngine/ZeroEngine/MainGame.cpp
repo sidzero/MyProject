@@ -8,7 +8,7 @@
 
 MainGame::MainGame() :_window(), _screenWidth(1024), _screenHeight(768), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f)
 {
-	
+	_camera.init(_screenWidth,_screenHeight);
 }
 
 
@@ -21,20 +21,20 @@ void MainGame::run()
 	initSystems();
 
 
-	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f, "Texture/PNG/CharacterRight_Standing.png");
+	//_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f, "Texture/PNG/CharacterRight_Standing.png");
 
 	_sprites.push_back(new nEngine::Sprite());
-	_sprites.back()->init(-1.0f, -1.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
+	_sprites.back()->init(0, 0, 500.0f,500.0f, "Texture/PNG/CharacterRight_Standing.png");
 
 
-	_sprites.push_back(new nEngine::Sprite());
-	_sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
+	//_sprites.push_back(new nEngine::Sprite());
+	//_sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
-	_sprites.push_back(new nEngine::Sprite());
-	_sprites.back()->init(0.0f, 0.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
+	//_sprites.push_back(new nEngine::Sprite());
+	//_sprites.back()->init(0.0f, 0.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
-	_sprites.push_back(new nEngine::Sprite());
-	_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
+	//_sprites.push_back(new nEngine::Sprite());
+	//_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
 	
 	//_playerTexture= ImageLoader::loadPNG("Texture/PNG/CharacterRight_Standing.png");
@@ -53,7 +53,7 @@ void MainGame::initSystems()
 
 void MainGame::initShaders()
 {
-	_colorProgram.compileShaders("Shaders/TextureShading.vert", "Shaders/TextureShading.frag");
+	_colorProgram.compileShaders("Shaders/CameraTextureShading.vert", "Shaders/CameraTextureShading.frag");
 	_colorProgram.addAttribute("vertexPosition");//chk the shader
 	_colorProgram.addAttribute("vertexColor");
 	_colorProgram.addAttribute("vertexUV");
@@ -63,7 +63,7 @@ void MainGame::initShaders()
 void  MainGame::processInput()
 {
 	SDL_Event evnt;
-
+	const float CAMERA_SPEED = 20.0f, SCALE_SPEED = 0.01f; float scaleT;
 	while(SDL_PollEvent(&evnt))
 	{
 
@@ -75,6 +75,37 @@ void  MainGame::processInput()
 			break;
 		case SDL_MOUSEMOTION:
 			//std::cout<<evnt.motion.x << " "<<evnt.motion.y<<std::endl;
+			break;
+
+		case SDL_KEYDOWN:
+			switch (evnt.key.keysym.sym)
+			{
+			case SDLK_w:
+				_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, -CAMERA_SPEED));
+				break;
+			case SDLK_s:
+				_camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
+				break;
+			case SDLK_a:
+				_camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0));
+				break;
+			case SDLK_d:
+				_camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED,0.0f));
+				break;
+
+			case SDLK_q:
+				scaleT = _camera.getScale() - SCALE_SPEED;
+				_camera.setScale(scaleT);
+				break;
+			case SDLK_e:
+				 scaleT = _camera.getScale() + SCALE_SPEED;
+				_camera.setScale(scaleT);
+				break;
+
+
+			default:
+				break;
+			}
 			break;
 		default:
 			break;
@@ -92,7 +123,10 @@ void  MainGame::gameLoop()
 		//frame time measure
 		float startTicks = SDL_GetTicks();
 		processInput();
+
+		_camera.update();
 		drawGame();
+
 		_time += 0.1f;
 		calculateFPS();
 		//print olny once every 10 frames
@@ -137,8 +171,15 @@ void  MainGame::drawGame()
 	
 	GLint timeLocation=_colorProgram.getUniformLocation("time");
 	GLint textureLocation = _colorProgram.getUniformLocation("mySampler");
+
+	GLint pLocation = _colorProgram.getUniformLocation("P");
+
 	glUniform1i(textureLocation,0);
 	glUniform1f(timeLocation,_time);
+
+	glm::mat4 cameraMatrix = _camera.getCameraMatrix();
+	glUniformMatrix4fv(pLocation,1,GL_FALSE,&(cameraMatrix[0][0]));
+
 	//_sprite.draw();
 
 	for (int i = 0; i < _sprites.size();i++)

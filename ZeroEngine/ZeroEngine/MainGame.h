@@ -7,6 +7,7 @@
 #include <NthEngine\GLTexture.h>
 #include <vector>
 #include <NthEngine\Window.h>
+#include <NthEngine\Camera2D.h>
 
 enum class GameState{PLAY,EXIT};
 class MainGame
@@ -37,5 +38,8 @@ private:
 	nEngine::GLTexture _playerTexture;
 
 	float _fps, _frameTime,_maxFPS;
+
+	nEngine::Camera2D _camera;
+	
 };
 
