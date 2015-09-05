@@ -1,19 +1,20 @@
-﻿Build started 8/31/2015 9:33:00 AM.
+﻿Build started 9/5/2015 12:47:53 PM.
      1>Project "E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\ZeroEngine\ZeroEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MainGame.cpp
          MainGame.cpp
-     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(118): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(136): warning C4244: 'argument' : conversion from 'float' to 'Uint32', possible loss of data
-     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(169): warning C4018: '<' : signed/unsigned mismatch
-     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(185): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
-     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(188): warning C4244: '=' : conversion from 'Uint32' to 'float', possible loss of data
+     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(93): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(111): warning C4244: 'argument' : conversion from 'float' to 'Uint32', possible loss of data
+     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(144): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(160): warning C4244: 'initializing' : conversion from 'Uint32' to 'float', possible loss of data
+     1>e:\openglporject15-8-2015\myproject\zeroengine\zeroengine\maingame.cpp(163): warning C4244: '=' : conversion from 'Uint32' to 'float', possible loss of data
        Link:
          E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\Debug\ZeroEngine.exe" /INCREMENTAL /NOLOGO /LIBPATH:"E:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64" SDL2.lib SDL2main.lib opengl32.lib glew32.lib SOIL.lib NthEngine.lib winmm.lib d3d9.lib d3dx9d.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\Debug\ZeroEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\Debug\ZeroEngine.lib" /MACHINE:X86 Debug\Main.obj
          Debug\MainGame.obj
+     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
          ZeroEngine.vcxproj -> E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\Debug\ZeroEngine.exe
      1>Done Building Project "E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\ZeroEngine\ZeroEngine.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.46
+Time Elapsed 00:00:01.61

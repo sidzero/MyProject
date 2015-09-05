@@ -6,6 +6,7 @@
 #include <NthEngine\GLSLprogram.h>
 #include <NthEngine\GLTexture.h>
 #include <vector>
+#include <NthEngine\Window.h>
 
 enum class GameState{PLAY,EXIT};
 class MainGame
@@ -25,15 +26,15 @@ private:
 	void gameLoop();
 	void drawGame();
 
-	SDL_Window* _window;
+	nEngine::Window _window;
 	int _screenWidth,_screenHeight;
 	GameState _gameState;
 
-	std::vector <Sprite*> _sprites;
-	Sprite _sprite;
-	GLSLprogram _colorProgram;
+	std::vector <nEngine::Sprite*> _sprites;
+	nEngine::Sprite _sprite;
+	nEngine::GLSLprogram _colorProgram;
 	float _time;
-	GLTexture _playerTexture;
+	nEngine::GLTexture _playerTexture;
 
 	float _fps, _frameTime,_maxFPS;
 };

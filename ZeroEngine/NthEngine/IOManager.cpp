@@ -1,33 +1,35 @@
 #include "IOManager.h"
 #include<fstream>
-
-bool IOManager::readFileToBuffer(std::string filePath, std::vector<unsigned char> &buffer)
+namespace nEngine
 {
-	std::ifstream file(filePath, std::ios::binary);//readin in binary format in 1's 0 's;
-
-	if (file.fail())
+	bool IOManager::readFileToBuffer(std::string filePath, std::vector<unsigned char> &buffer)
 	{
-		perror(filePath.c_str());
-		return false;
-	}
+		std::ifstream file(filePath, std::ios::binary);//readin in binary format in 1's 0 's;
 
-	//determine file size
-	file.seekg(0,std::ios::end);//put cursor at end
+		if (file.fail())
+		{
+			perror(filePath.c_str());
+			return false;
+		}
 
-	int fileSize = file.tellg();//how many bytes before currrent locations
-	file.seekg(0, std::ios::beg);//set it back at start
+		//determine file size
+		file.seekg(0, std::ios::end);//put cursor at end
 
-	//reduce file size by any header it mightr have
-	fileSize -= file.tellg();
+		int fileSize = file.tellg();//how many bytes before currrent locations
+		file.seekg(0, std::ios::beg);//set it back at start
 
-	buffer.resize(fileSize);
+		//reduce file size by any header it mightr have
+		fileSize -= file.tellg();
 
-	file.read((char *)&(buffer[0]),fileSize);
+		buffer.resize(fileSize);
 
-	file.close();
+		file.read((char *)&(buffer[0]), fileSize);
 
-	return true;
+		file.close();
+
+		return true;
+
+	};
+
 
 };
-
-

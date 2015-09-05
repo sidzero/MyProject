@@ -2,14 +2,23 @@
 #include <SDL\SDL.h>
 #include<glew\glew.h>
 #include <string>
-class Window
+namespace nEngine
 {
-public:
-	Window();
-	~Window();
+enum windowFlags{INVISIBLE=0x1,FULLSCREEN=0x2,BORDERLESS=0x4};
 
-	int create(std::string windowName);
-private:
-	SDL_Window * _sdlWindow;
-};
+	class Window
+	{
+	public:
+		Window();
+		~Window();
 
+		int create(std::string windowName, int screenWidth, int screenHeight, unsigned int currentFlags);
+		void swapBuffer();
+		int getScreenWidth{ _screenWidth };
+		int getScreenHeight{ _screenHeight };
+	private:
+		SDL_Window * _sdlWindow;
+		int _screenWidth, _screenHeight;
+	};
+
+}

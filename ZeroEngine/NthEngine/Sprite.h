@@ -2,18 +2,21 @@
 #include <glew\glew.h>
 #include "GLTexture.h"
 #include <string>
-class Sprite
+namespace nEngine
 {
-public:
-	Sprite();
-	~Sprite();
+	class Sprite
+	{
+	public:
+		Sprite();
+		~Sprite();
 
-	void init(float x, float y, float width, float height,std::string texturePath);
-	void draw();
-private:
-	int _x, _y, _width, _height;
+		void init(float x, float y, float width, float height, std::string texturePath);
+		void draw();
+	private:
+		int _x, _y, _width, _height;
 
-	GLuint _vboID;
-	GLTexture _texture;
+		GLuint _vboID;
+		GLTexture _texture;
+	};
+
 };
-

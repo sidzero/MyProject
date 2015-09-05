@@ -1,12 +1,12 @@
 #include "MainGame.h"
-
+#include <NthEngine\NEngine.h>
 #include <iostream>
 #include<string>
-#include <NthEngine\Error.h>
+#include <NthEngine\Err.h>
 #include <NthEngine\ImageLoader.h>
 
 
-MainGame::MainGame() :_window(nullptr), _screenWidth(1024), _screenHeight(768), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f)
+MainGame::MainGame() :_window(), _screenWidth(1024), _screenHeight(768), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f)
 {
 	
 }
@@ -23,17 +23,17 @@ void MainGame::run()
 
 	_sprite.init(-1.0f, -1.0f, 2.0f, 2.0f, "Texture/PNG/CharacterRight_Standing.png");
 
-	_sprites.push_back(new Sprite());
+	_sprites.push_back(new nEngine::Sprite());
 	_sprites.back()->init(-1.0f, -1.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
 
-	_sprites.push_back(new Sprite());
+	_sprites.push_back(new nEngine::Sprite());
 	_sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
-	_sprites.push_back(new Sprite());
+	_sprites.push_back(new nEngine::Sprite());
 	_sprites.back()->init(0.0f, 0.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
-	_sprites.push_back(new Sprite());
+	_sprites.push_back(new nEngine::Sprite());
 	_sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "Texture/PNG/CharacterRight_Standing.png");
 
 	
@@ -44,35 +44,10 @@ void MainGame::run()
 
 void MainGame::initSystems()
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-	_window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, SDL_WINDOW_OPENGL);
-	if (_window==nullptr)
-	{
-		fatalerror("SDL window cannot be created");
-	}
-
-	SDL_GLContext glContext = SDL_GL_CreateContext(_window);
-
-	if (glContext==nullptr)
-	{
-		fatalerror("Sdl_GL context cannot be created");
-	}
-	glewExperimental = true;
-	GLenum error= glewInit();
-	if (error!=GLEW_OK)
-	{
-		fatalerror("Could not initialse glew");
-	}
-
-
-	glClearColor(0.5,0.0,0.5,1.0);
-
-	SDL_GL_SetSwapInterval(0);
-
+	/*SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);*/
+	_window.create("Game Engine",_screenWidth,_screenHeight,0);
 	initShaders();
-	std::printf("**** opengl version %s *****\n",glGetString(GL_VERSION));
 };
 
 
@@ -172,7 +147,7 @@ void  MainGame::drawGame()
 	}
 	glBindTexture(GL_TEXTURE_2D, 0);
 	_colorProgram.unUse();
-	SDL_GL_SwapWindow(_window);
+	_window.swapBuffer();
 	
 
 };

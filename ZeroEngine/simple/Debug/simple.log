@@ -1,11 +1,12 @@
-﻿Build started 8/19/2015 9:47:24 PM.
+﻿Build started 9/5/2015 11:54:17 AM.
      1>Project "E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\simple\simple.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main1.cpp
          main1.cpp
      1>e:\openglporject15-8-2015\myproject\zeroengine\simple\main1.cpp(34): warning C4018: '<' : signed/unsigned mismatch
      1>e:\openglporject15-8-2015\myproject\zeroengine\simple\main1.cpp(42): warning C4018: '<' : signed/unsigned mismatch
-     1>e:\openglporject15-8-2015\myproject\zeroengine\simple\main1.cpp(52): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\openglporject15-8-2015\myproject\zeroengine\simple\main1.cpp(46): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\openglporject15-8-2015\myproject\zeroengine\simple\main1.cpp(60): warning C4018: '<' : signed/unsigned mismatch
        Link:
          E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\Debug\simple.exe" /INCREMENTAL /NOLOGO /LIBPATH:"E:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x64" winmm.lib d3d9.lib d3dx9d.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\Debug\simple.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\Debug\simple.lib" /MACHINE:X86 Debug\LevelLoader.obj
          Debug\main.obj
@@ -17,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.22
+Time Elapsed 00:00:01.62

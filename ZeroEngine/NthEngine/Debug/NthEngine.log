@@ -1,31 +1,25 @@
-﻿Build started 8/30/2015 9:45:08 PM.
+﻿Build started 9/5/2015 12:47:47 PM.
      1>Project "E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\NthEngine\NthEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Error.cpp GLSLprogram.cpp ImageLoader.cpp IOManager.cpp picopng.cpp ResourceManager.cpp Sprite.cpp TextureCache.cpp
-         TextureCache.cpp
-         Sprite.cpp
-     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\sprite.cpp(20): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\sprite.cpp(21): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\sprite.cpp(22): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\sprite.cpp(23): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-         ResourceManager.cpp
-         picopng.cpp
-         IOManager.cpp
-     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\iomanager.cpp(17): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
-     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\iomanager.cpp(21): warning C4244: '-=' : conversion from 'std::streamoff' to 'int', possible loss of data
+         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Error.cpp GLSLprogram.cpp ImageLoader.cpp Window.cpp
+         Error.cpp
+         Generating Code...
+         Compiling...
+         Window.cpp
          ImageLoader.cpp
          GLSLprogram.cpp
-         Error.cpp
          Generating Code...
        Lib:
          E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\Debug\NthEngine.lib" SDL2.lib SDL2main.lib opengl32.lib glew32.lib SOIL.lib /NOLOGO Debug\Error.obj
          Debug\GLSLprogram.obj
          Debug\ImageLoader.obj
          Debug\IOManager.obj
+         Debug\NEngine.obj
          Debug\picopng.obj
          Debug\ResourceManager.obj
          Debug\Sprite.obj
          Debug\TextureCache.obj
+         Debug\Window.obj
      1>opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
      1>opengl32.lib(OPENGL32.dll) : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
      1>glew32.lib(glew32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
@@ -35,4 +29,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.17
+Time Elapsed 00:00:03.73

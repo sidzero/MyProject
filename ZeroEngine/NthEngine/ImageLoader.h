@@ -1,12 +1,14 @@
 #pragma once
 #include "GLTexture.h"
 #include <string>
-
-class ImageLoader
+namespace nEngine
 {
-public:
-	static GLTexture loadPNG(const GLchar *fileName);
-	
+	class ImageLoader
+	{
+	public:
+		static GLTexture loadPNG(const GLchar *fileName);
 
 
-};
+
+	};
+}

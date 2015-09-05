@@ -1,8 +1,11 @@
 #pragma once
 #include <glew\glew.h>
-struct GLTexture
+namespace nEngine
 {
-	GLuint id;
-	int width, height;
+	struct GLTexture
+	{
+		GLuint id;
+		int width, height;
 
+	};
 };

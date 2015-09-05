@@ -86,6 +86,7 @@
     <ClCompile Include="GLSLprogram.cpp" />
     <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="IOManager.cpp" />
+    <ClCompile Include="NEngine.cpp" />
     <ClCompile Include="picopng.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -93,11 +94,12 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Error.h" />
+    <ClInclude Include="Err.h" />
     <ClInclude Include="GLSLprogram.h" />
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="IOManager.h" />
+    <ClInclude Include="NEngine.h" />
     <ClInclude Include="picopng.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Sprite.h" />
