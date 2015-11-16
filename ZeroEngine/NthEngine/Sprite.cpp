@@ -115,7 +115,8 @@ namespace nEngine
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 		glDisableVertexAttribArray(0);
-
+		glDisableVertexAttribArray(1);
+		glDisableVertexAttribArray(2);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	};
 };

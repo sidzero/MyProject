@@ -1,8 +1,16 @@
-﻿Build started 9/5/2015 3:06:49 PM.
+﻿Build started 9/8/2015 9:46:01 AM.
      1>Project "E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\NthEngine\NthEngine.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera2D.cpp
-         Camera2D.cpp
+         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Sprite.cpp SpriteBatch.cpp
+         Sprite.cpp
+     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\sprite.cpp(22): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\sprite.cpp(23): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\sprite.cpp(24): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>e:\openglporject15-8-2015\myproject\zeroengine\nthengine\sprite.cpp(25): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+         Generating Code...
+         Compiling...
+         SpriteBatch.cpp
+         Generating Code...
        Lib:
          E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"E:\OpenglPorject15-8-2015\MyProject\ZeroEngine\Debug\NthEngine.lib" SDL2.lib SDL2main.lib opengl32.lib glew32.lib SOIL.lib /NOLOGO Debug\Camera2D.obj
          Debug\Error.obj
@@ -13,6 +21,7 @@
          Debug\picopng.obj
          Debug\ResourceManager.obj
          Debug\Sprite.obj
+         Debug\SpriteBatch.obj
          Debug\TextureCache.obj
          Debug\Window.obj
      1>opengl32.lib(OPENGL32.dll) : warning LNK4006: __NULL_IMPORT_DESCRIPTOR already defined in SDL2.lib(SDL2.dll); second definition ignored
@@ -24,4 +33,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.16
+Time Elapsed 00:00:02.76
